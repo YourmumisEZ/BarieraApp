@@ -1,0 +1,12 @@
+BarieraApp.BarieraService, BarieraApp;md58d9ce64f4f168d17ff3ee6b8f256f165.BarieraService
+BarieraApp.BarieraService, BarieraApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md58d9ce64f4f168d17ff3ee6b8f256f165.BarieraService
+BarieraApp.BarieraService;md58d9ce64f4f168d17ff3ee6b8f256f165.BarieraService
+barieraapp.BarieraService;md58d9ce64f4f168d17ff3ee6b8f256f165.BarieraService
+BarieraApp.MainActivity, BarieraApp;md58d9ce64f4f168d17ff3ee6b8f256f165.MainActivity
+BarieraApp.MainActivity, BarieraApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md58d9ce64f4f168d17ff3ee6b8f256f165.MainActivity
+BarieraApp.MainActivity;md58d9ce64f4f168d17ff3ee6b8f256f165.MainActivity
+barieraapp.MainActivity;md58d9ce64f4f168d17ff3ee6b8f256f165.MainActivity
+BarieraApp.SmsReceiver, BarieraApp;md58d9ce64f4f168d17ff3ee6b8f256f165.SmsReceiver
+BarieraApp.SmsReceiver, BarieraApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md58d9ce64f4f168d17ff3ee6b8f256f165.SmsReceiver
+BarieraApp.SmsReceiver;md58d9ce64f4f168d17ff3ee6b8f256f165.SmsReceiver
+barieraapp.SmsReceiver;md58d9ce64f4f168d17ff3ee6b8f256f165.SmsReceiver
