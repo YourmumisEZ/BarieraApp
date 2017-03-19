@@ -2,7 +2,6 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
-using Java.Lang;
 
 namespace BarieraApp
 {
@@ -11,6 +10,8 @@ namespace BarieraApp
     {
         Button startButton;
         Button stopButton;
+        Button setPhoneNumberButton;
+        EditText phoneNumber;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -19,7 +20,13 @@ namespace BarieraApp
             startButton.Click += Start_Click;
             stopButton = FindViewById<Button>(Resource.Id.button2);
             stopButton.Click += Stop_Click;
-            stopButton.Enabled = false;
+            setPhoneNumberButton = FindViewById<Button>(Resource.Id.button3);
+            setPhoneNumberButton.Click += SetPhoneNumber;
+            phoneNumber = (EditText)FindViewById(Resource.Id.phoneNr);
+
+            var isRunning = Operations.CheckIfBarieraServiceIsRunning();
+            startButton.Enabled = !isRunning;
+            stopButton.Enabled = isRunning;
         }
         void Start_Click(object sender, System.EventArgs e)
         {
@@ -31,9 +38,15 @@ namespace BarieraApp
 
         void Stop_Click(object sender, System.EventArgs e)
         {
+            var isRunning = Operations.CheckIfBarieraServiceIsRunning();
             StopService(new Intent(this, typeof(BarieraService)));
             startButton.Enabled = true;
             stopButton.Enabled = false;
+        }
+
+        void SetPhoneNumber(object sender, System.EventArgs e)
+        {
+            Operations.SetPhoneNumber(phoneNumber.Text);
         }
     }
 }

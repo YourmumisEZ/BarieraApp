@@ -20,7 +20,6 @@ namespace BarieraApp
     {
         public bool openBariera;
         BarieraService service = null;
-
         public static readonly string IntentAction = "android.provider.Telephony.SMS_RECEIVED";
         public static int Test = 0;
         public override void OnReceive(Context context, Intent intent)
@@ -42,7 +41,7 @@ namespace BarieraApp
                     var sms = SmsMessage.CreateFromPdu((byte[])item);
                     if (service!=null && sms.DisplayMessageBody.ToLower().Contains("bariera"))
                     {
-                        service.CallNumber("tel: 0742606519");
+                        service.CallNumber(string.Format("tel: {0}","0733767442"));
                     }
                 }
             }

@@ -13,4 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button2" />
+    <TextView
+        android:id="@+id/phoneNrLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Barrier Number"
+        android:gravity="center" />
+    <EditText
+        android:id="@+id/phoneNr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="Set Phone Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3" />
 </LinearLayout>
