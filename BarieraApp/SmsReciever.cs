@@ -1,16 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.Telephony;
-using Android.Provider;
+
 
 namespace BarieraApp
 {
@@ -18,13 +9,10 @@ namespace BarieraApp
     [IntentFilter(new[] { "android.provider.Telephony.SMS_RECEIVED" })]
     public class SmsReceiver : BroadcastReceiver
     {
-        public bool openBariera;
-        BarieraService service = null;
         public static readonly string IntentAction = "android.provider.Telephony.SMS_RECEIVED";
-        public static int Test = 0;
+
         public override void OnReceive(Context context, Intent intent)
         {
-            openBariera = false;
             if (intent.Action != IntentAction)
             {
                 return;
@@ -39,17 +27,20 @@ namespace BarieraApp
                 foreach (var item in smsArray)
                 {
                     var sms = SmsMessage.CreateFromPdu((byte[])item);
-                    if (service!=null && sms.DisplayMessageBody.ToLower().Contains("bariera"))
+                    if (sms.DisplayMessageBody.ToLower().Contains("bariera"))
                     {
-                        service.CallNumber(string.Format("tel: {0}","0733767442"));
+                        if (!string.IsNullOrEmpty(Operations.CurrentPhoneNumber))
+                        {
+                            CallNumber(context, string.Format("tel: {0}", Operations.CurrentPhoneNumber));
+                        }
                     }
                 }
             }
         }
 
-        public void SetService(BarieraService service)
+        private void CallNumber(Context context, string phoneNumber)
         {
-            this.service = service;
+            context.StartActivity(new Intent(Intent.ActionCall, Android.Net.Uri.Parse(phoneNumber)));
         }
     }
 }

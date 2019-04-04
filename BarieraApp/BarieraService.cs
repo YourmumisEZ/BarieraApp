@@ -15,8 +15,8 @@ namespace BarieraApp
     [Service]
     public class BarieraService : Service
     {
+        private SmsReceiver receiver;
 
-        private SmsReceiver _receiver = new SmsReceiver();
         public override IBinder OnBind(Intent intent)
         {
             return null;
@@ -24,25 +24,18 @@ namespace BarieraApp
 
         public override void OnCreate()
         {
+            receiver= new SmsReceiver();
             base.OnCreate();
         }
         public override void OnDestroy()
         {
             base.OnDestroy();
-            UnregisterReceiver(_receiver);
+            receiver.Dispose();
         }
 
-        public void CallNumber(string phoneNumber)
-        {
-            var uri = Android.Net.Uri.Parse(phoneNumber);
-            var callIntent = new Intent(Intent.ActionCall, uri);
-            StartActivity(callIntent);
-        }
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-            _receiver.SetService(this);
-            RegisterReceiver(_receiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
-
+            RegisterReceiver(receiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
             return StartCommandResult.Sticky;
         }
     }
