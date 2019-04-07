@@ -3,6 +3,10 @@ using Android.Widget;
 using Android.OS;
 using Android.Content;
 using Android.Graphics;
+using Android.Content.PM;
+using Android.Runtime;
+using Android;
+using System.Linq;
 
 namespace BarieraApp
 {
@@ -14,7 +18,14 @@ namespace BarieraApp
         private Button setPhoneNumberButton;
         private EditText phoneNumber;
         private TextView phoneNumberError;
-        //private SmsReceiver receiver;
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            if (grantResults.All(x => (int)x == 0))
+            {
+                StartService();
+            }
+        }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -44,13 +55,32 @@ namespace BarieraApp
 
         private void Start_Click(object sender, System.EventArgs e)
         {
-            //receiver = new SmsReceiver();
-            //RegisterReceiver(receiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
-            StartService(new Intent(this, typeof(BarieraService)));
-            startButton.Enabled = false;
-            stopButton.Enabled = true;
+            if (string.IsNullOrEmpty(Operations.CurrentPhoneNumber))
+            {
+                CreateSetNumberAlert();
+                return;
+            }
+            var neededPermissions = Operations.GetNeededPermissions(this.ApplicationContext);
+
+            if (neededPermissions.Length > 0)
+            {
+                RequestPermissions(neededPermissions, Operations.PermissionCode++);
+            }
+            else
+            {
+                StartService();
+            }
         }
 
+        private void CreateSetNumberAlert()
+        {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.SetTitle("Invalid number");
+            alert.SetMessage("Set a valid number");
+            alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+            Dialog dialog = alert.Create();
+            dialog.Show();
+        }
 
         private void Stop_Click(object sender, System.EventArgs e)
         {
@@ -58,6 +88,13 @@ namespace BarieraApp
             StopService(new Intent(this, typeof(BarieraService)));
             startButton.Enabled = true;
             stopButton.Enabled = false;
+        }
+
+        private void StartService()
+        {
+            StartService(new Intent(this, typeof(BarieraService)));
+            startButton.Enabled = false;
+            stopButton.Enabled = true;
         }
 
         private void SetPhoneNumber(object sender, System.EventArgs e)
