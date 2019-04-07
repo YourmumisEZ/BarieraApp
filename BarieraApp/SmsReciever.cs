@@ -9,11 +9,16 @@ namespace BarieraApp
     [IntentFilter(new[] { "android.provider.Telephony.SMS_RECEIVED" })]
     public class SmsReceiver : BroadcastReceiver
     {
-        public static readonly string IntentAction = "android.provider.Telephony.SMS_RECEIVED";
+        private MainService service;
+
+        public SmsReceiver()
+        {
+            service = new MainService();
+        }
 
         public override void OnReceive(Context context, Intent intent)
         {
-            if (intent.Action != IntentAction)
+            if (intent.Action != "android.provider.Telephony.SMS_RECEIVED")
             {
                 return;
             }
@@ -29,9 +34,9 @@ namespace BarieraApp
                     var sms = SmsMessage.CreateFromPdu((byte[])item);
                     if (sms.DisplayMessageBody.ToLower().Contains("bariera"))
                     {
-                        if (!string.IsNullOrEmpty(Operations.CurrentPhoneNumber))
+                        if (!string.IsNullOrEmpty(MainService.CurrentPhoneNumber))
                         {
-                            CallNumber(context, string.Format("tel: {0}", Operations.CurrentPhoneNumber));
+                            CallNumber(context, string.Format("tel: {0}", MainService.CurrentPhoneNumber));
                         }
                     }
                 }
