@@ -61,5 +61,6 @@ D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\android\asset
 D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\android\assets\System.ServiceModel.Internals.pdb
 D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\android\assets\System.Xml.Linq.pdb
 D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\android\assets\System.Xml.pdb
+D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\res\drawable\ic_stat_vpn_key.png
 D:\solutions\Bariera\BarieraApp\BarieraApp\bin\Debug\BarieraApp.dll
 D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\linksrc\BarieraApp.dll.mdb
