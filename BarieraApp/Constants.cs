@@ -13,6 +13,8 @@ namespace BarieraApp
         public const string NotAPhoneNumberMessage = "Please set a valid one";
         public const string NotAPhoneNumberDialogPositiveOption = "Ok";
         public const string PhoneNumberSetMessage = "Number set to : {0}";
+        public const string StopService = "Stop Service";
+        public const string ActionStopService = "BarieraApp.action.STOP_SERVICE";
         public const int NotificationID = 10000;
     }
 }

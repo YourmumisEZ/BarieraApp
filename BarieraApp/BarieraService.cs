@@ -54,14 +54,25 @@ namespace BarieraApp
                                .SetContentText(Constants.BarrierAppNotificationText)
                                .SetSmallIcon(Resource.Drawable.ic_stat_vpn_key)
                                .SetContentIntent(pendingIntent)
-                               //.SetOngoing(true)
-                               // .AddAction(new Notification.Action()
-                               // .AddAction()
+                               .AddAction(StopServiceAction())
                                 .Build();
 
             StartForeground(Constants.NotificationID, notification);
 
             return StartCommandResult.Sticky;
+        }
+
+        private Notification.Action StopServiceAction()
+        {
+            this.StopForeground(true);
+            var stopServiceIntent = new Intent(this, GetType());
+            stopServiceIntent.SetAction(Constants.ActionStopService);
+            var stopServicePendingIntent = PendingIntent.GetService(this, 0, stopServiceIntent, 0);
+
+            var builder = new Notification.Action.Builder(Android.Resource.Drawable.IcMediaPause,
+                                                          Constants.StopService,
+                                                          stopServicePendingIntent);
+            return builder.Build();
         }
     }
 }
