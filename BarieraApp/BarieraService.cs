@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 namespace BarieraApp
 {
@@ -35,15 +27,13 @@ namespace BarieraApp
 
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-            RegisterReceiver(receiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
+            RegisterReceiver(receiver, new IntentFilter(Constants.AndroidSMSReceived));
 
-            var notificationID = "my_channel_01";
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
             {
                 NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
-                var mChannel = new NotificationChannel(notificationID, "my_channel", NotificationImportance.High);
-                mChannel.Description = "This is my channel";
+                var mChannel = new NotificationChannel(Constants.BarrierChannelID, Constants.BarrierChannel, NotificationImportance.High);
                 mChannel.EnableLights(true);
                 mChannel.LightColor = 2;
                 mChannel.EnableVibration(true);
@@ -53,24 +43,23 @@ namespace BarieraApp
             }
 
             var pendingIntent = PendingIntent.GetActivity(
-                    ApplicationContext,
+                    this,
                     0,
                     new Intent(this, typeof(MainActivity)),
                     PendingIntentFlags.UpdateCurrent
                 );
 
-            var notification = new Notification.Builder(this, notificationID)
-                               .SetContentTitle("BarrierApp")
-                               .SetContentText("text")
+            var notification = new Notification.Builder(this, Constants.BarrierChannelID)
+                               .SetContentTitle(Constants.BarrierAppName)
+                               .SetContentText(Constants.BarrierAppNotificationText)
                                .SetSmallIcon(Resource.Drawable.ic_stat_vpn_key)
                                .SetContentIntent(pendingIntent)
-                               .SetPriority((int)NotificationPriority.High)
                                //.SetOngoing(true)
                                // .AddAction(new Notification.Action()
                                // .AddAction()
                                 .Build();
 
-            StartForeground(10000, notification);
+            StartForeground(Constants.NotificationID, notification);
 
             return StartCommandResult.Sticky;
         }

@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{E2C82EF1-8170-44F1-8DBF-55BFE478CD57}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BarieraApp/MainActivity.cs">
+    <Files>
+      <File FileName="BarieraApp/BarieraService.cs" Line="4" Column="1" />
+      <File FileName="BarieraApp/Constants.cs" Line="11" Column="36" />
+      <File FileName="BarieraApp/SmsReciever.cs" Line="41" Column="22" />
+      <File FileName="BarieraApp/MainActivity.cs" Line="42" Column="38" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BarieraApp" expanded="True">
+            <Node name="BarieraApp" expanded="True">
+              <Node name="MainActivity.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.BarieraApp PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

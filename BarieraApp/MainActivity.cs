@@ -52,7 +52,6 @@ namespace BarieraApp
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            //receiver.Dispose();
         }
 
         private void Start_Click(object sender, System.EventArgs e)
@@ -77,9 +76,9 @@ namespace BarieraApp
         private void CreateSetNumberAlert()
         {
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.SetTitle("Invalid number");
-            alert.SetMessage("Set a valid number");
-            alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+            alert.SetTitle(Constants.NotAPhoneNumberTitle);
+            alert.SetMessage(Constants.NotAPhoneNumberTitle);
+            alert.SetPositiveButton(Constants.NotAPhoneNumberDialogPositiveOption, (senderAlert, args) => { });
             Dialog dialog = alert.Create();
             dialog.Show();
         }
@@ -105,24 +104,12 @@ namespace BarieraApp
             if (service.IsValidaPhoneNumber(phoneNumber.Text))
             {
                 service.SetPhoneNumber(phoneNumber.Text);
-                SetErrorToFalse();
+                Toast.MakeText(this, string.Format(Constants.PhoneNumberSetMessage,phoneNumber.Text), ToastLength.Long).Show();
             }
             else
             {
-                SetErrorToTrue();
+                CreateSetNumberAlert();
             }
-        }
-
-        private void SetErrorToTrue()
-        {
-            phoneNumberError.SetTextColor(Color.Red);
-            phoneNumberError.Text = "Not a phone number";
-        }
-
-        private void SetErrorToFalse()
-        {
-            phoneNumberError.SetTextColor(Color.Green);
-            phoneNumberError.Text = "Number Saved";
         }
     }
 }

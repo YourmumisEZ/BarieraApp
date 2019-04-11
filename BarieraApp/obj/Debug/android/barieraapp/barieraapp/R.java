@@ -11,7 +11,8 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
+        public static final int ic_stat_vpn_key=0x7f020000;
+        public static final int icon=0x7f020001;
     }
     public static final class id {
         public static final int button1=0x7f050000;
@@ -19,6 +20,7 @@ public final class R {
         public static final int button3=0x7f050004;
         public static final int phoneNr=0x7f050003;
         public static final int phoneNrLabel=0x7f050002;
+        public static final int phoneNumberError=0x7f050005;
     }
     public static final class layout {
         public static final int main=0x7f030000;

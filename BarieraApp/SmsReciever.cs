@@ -6,7 +6,7 @@ using Android.Telephony;
 namespace BarieraApp
 {
     [BroadcastReceiver(Label = "SMS Receiver")]
-    [IntentFilter(new[] { "android.provider.Telephony.SMS_RECEIVED" })]
+    [IntentFilter(new[] { Constants.AndroidSMSReceived })]
     public class SmsReceiver : BroadcastReceiver
     {
         private MainService service;
@@ -18,7 +18,7 @@ namespace BarieraApp
 
         public override void OnReceive(Context context, Intent intent)
         {
-            if (intent.Action != "android.provider.Telephony.SMS_RECEIVED")
+            if (intent.Action != Constants.AndroidSMSReceived)
             {
                 return;
             }
@@ -32,7 +32,7 @@ namespace BarieraApp
                 foreach (var item in smsArray)
                 {
                     var sms = SmsMessage.CreateFromPdu((byte[])item);
-                    if (sms.DisplayMessageBody.ToLower().Contains("bariera"))
+                    if (sms.DisplayMessageBody.ToLower().Contains(Constants.Keyword))
                     {
                         if (!string.IsNullOrEmpty(MainService.CurrentPhoneNumber))
                         {
