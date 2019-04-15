@@ -93,7 +93,7 @@ namespace BarieraApp
 
         private void StartService()
         {
-            StartService(new Intent(this, typeof(BarieraService)));
+            StartService(new Intent(this, typeof(BarieraService)).SetAction(Constants.ActionStartService));
             startButton.Enabled = false;
             stopButton.Enabled = true;
         }
