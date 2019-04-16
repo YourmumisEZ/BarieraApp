@@ -1,28 +1,53 @@
 ﻿<Properties StartupConfiguration="{E2C82EF1-8170-44F1-8DBF-55BFE478CD57}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BarieraApp/MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Source Not Available">
     <Files>
-      <File FileName="BarieraApp/BarieraService.cs" Line="4" Column="1" />
-      <File FileName="BarieraApp/Constants.cs" Line="11" Column="36" />
+      <File FileName="BarieraApp/BarieraService.cs" Line="22" Column="41" />
       <File FileName="BarieraApp/SmsReciever.cs" Line="41" Column="22" />
-      <File FileName="BarieraApp/MainActivity.cs" Line="42" Column="38" />
+      <File FileName="BarieraApp/MainActivity.cs" Line="66" Column="57" />
+      <File FileName="BarieraApp/Constants.cs" Line="18" Column="56" />
+      <File FileName="BarieraApp/MainService.cs" Line="35" Column="33" />
+      <File FileName="DataLayer/Repositories/TelephoneRepository.cs" Line="11" Column="1" />
+      <File FileName="DataLayer/Constants.cs" Line="5" Column="54" />
+      <File FileName="DataLayer/DBHelper.cs" Line="9" Column="49" />
+      <File FileName="Source Not Available" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BarieraApp" expanded="True">
             <Node name="BarieraApp" expanded="True">
-              <Node name="MainActivity.cs" selected="True" />
+              <Node name="References" expanded="True" />
+              <Node name="Packages" expanded="True" />
+              <Node name="Assets" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+            <Node name="DataLayer" expanded="True">
+              <Node name="DataModels" expanded="True" />
+              <Node name="Repositories" expanded="True">
+                <Node name="TelephoneRepository.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>test</Value>
+          <Value>test!=null</Value>
+          <Value>context.DB.Table&lt;Telephone&gt;()</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.BarieraApp PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+  <MonoDevelop.Ide.ItemProperties.BarieraApp PreferredExecutionTarget="Android.my_device" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/andrei.trenea/RiderProjects/Barrier/BarieraApp/DataLayer/Repositories/TelephoneRepository.cs" relfile="DataLayer/Repositories/TelephoneRepository.cs" line="31" column="23" />
+      <Breakpoint file="/Users/andrei.trenea/RiderProjects/Barrier/BarieraApp/DataLayer/Repositories/TelephoneRepository.cs" relfile="DataLayer/Repositories/TelephoneRepository.cs" line="11" column="1" />
+      <Breakpoint file="/Users/andrei.trenea/RiderProjects/Barrier/BarieraApp/DataLayer/Repositories/TelephoneRepository.cs" relfile="DataLayer/Repositories/TelephoneRepository.cs" line="21" column="14" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -1,1 +1,9 @@
+DataLayer
 System.Runtime
+SQLite-net
+SQLitePCLRaw.core
+SQLitePCLRaw.batteries_v2
+System.Reflection.Extensions
+SQLitePCLRaw.provider.e_sqlite3
+SQLitePCLRaw.batteries_green
+SQLitePCLRaw.lib.e_sqlite3

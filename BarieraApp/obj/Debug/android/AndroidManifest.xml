@@ -6,6 +6,7 @@
   <uses-permission android:name="android.permission.WRITE_SMS" />
   <uses-permission android:name="android.permission.CALL_PHONE" />
   <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
+  <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
   <uses-permission android:name="android.permission.INTERNET" />
   <application android:label="BarieraApp" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
     <service android:name="md57e055b9e91679dbda5afa73fbae8dc64.BarieraService" />

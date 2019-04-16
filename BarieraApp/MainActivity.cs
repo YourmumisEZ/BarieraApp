@@ -45,6 +45,8 @@ namespace BarieraApp
 
             service = new MainService();
 
+            phoneNumber.Text=service.GetSelectedPhone();
+
             startButton.Enabled = !service.CheckIfBarieraServiceIsRunning();
             stopButton.Enabled = service.CheckIfBarieraServiceIsRunning();
         }

@@ -5,6 +5,8 @@ using Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using DataLayer.DataModels;
+using DataLayer.Repositories;
 
 namespace BarieraApp
 {
@@ -25,6 +27,13 @@ namespace BarieraApp
 
         public static int PermissionCode { get; set; }
 
+        private TelephoneRepository repository;
+
+        public MainService()
+        {
+            repository = new TelephoneRepository();
+            repository.Create();
+        }
 
         public bool CheckIfBarieraServiceIsRunning()
         {
@@ -35,6 +44,8 @@ namespace BarieraApp
 
         public void SetPhoneNumber(string newPhoneNumber)
         {
+            repository.Invalidate();
+            repository.Insert(new Telephone { Number = newPhoneNumber, IsSelected = true });
             CurrentPhoneNumber = newPhoneNumber;
         }
 
@@ -79,6 +90,11 @@ namespace BarieraApp
             }
 
             return true;
+        }
+
+        public string GetSelectedPhone()
+        {
+            return repository.GetTelephone()?.Number;
         }
     }
 }
