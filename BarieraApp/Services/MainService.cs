@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android;
@@ -8,7 +7,7 @@ using Android.Content.PM;
 using DataLayer.DataModels;
 using DataLayer.Repositories;
 
-namespace BarieraApp
+namespace BarieraApp.Services
 {
     public class MainService
     {
@@ -23,33 +22,31 @@ namespace BarieraApp
             Manifest.Permission.ReceiveSms
         };
 
-        public static string CurrentPhoneNumber { get; set; }
-
-        public static int PermissionCode { get; set; }
-
-        private TelephoneRepository repository;
-
         public MainService()
         {
-            repository = new TelephoneRepository();
-            repository.Create();
+            using (var repository = new TelephoneRepository())
+            {
+                repository.Create();
+            }
         }
 
         public bool CheckIfBarieraServiceIsRunning()
         {
-            var serviceName = new BarieraService().Class.Name;
+            var serviceName = new BarieraForgroundService().Class.Name;
             IEnumerable<string> runningServices = GetRunningServices();
             return runningServices.Any(x => x == serviceName);
         }
 
         public void SetPhoneNumber(string newPhoneNumber)
         {
-            repository.Invalidate();
-            repository.Insert(new Telephone { Number = newPhoneNumber, IsSelected = true });
-            CurrentPhoneNumber = newPhoneNumber;
+            using (var repository = new TelephoneRepository())
+            {
+                repository.Invalidate();
+                repository.Insert(new Telephone { Number = newPhoneNumber, IsSelected = true });
+            }
         }
 
-        public bool IsValidaPhoneNumber(string phoneNumber)
+        public bool IsValidPhoneNumber(string phoneNumber)
         {
             if (phoneNumber.StartsWith("07") && phoneNumber.Length == 10 && IsDigitsOnly(phoneNumber))
             {
@@ -73,6 +70,14 @@ namespace BarieraApp
             return result.ToArray();
         }
 
+        public string GetSelectedPhone()
+        {
+            using (var repository = new TelephoneRepository())
+            {
+                return repository.GetTelephone()?.Number;
+            }
+        }
+
         private IEnumerable<string> GetRunningServices()
         {
             var manager = (ActivityManager)Application.Context.GetSystemService(Context.ActivityService);
@@ -90,11 +95,6 @@ namespace BarieraApp
             }
 
             return true;
-        }
-
-        public string GetSelectedPhone()
-        {
-            return repository.GetTelephone()?.Number;
         }
     }
 }

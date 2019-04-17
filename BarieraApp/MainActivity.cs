@@ -5,8 +5,8 @@ using Android.Content;
 using Android.Graphics;
 using Android.Content.PM;
 using Android.Runtime;
-using Android;
 using System.Linq;
+using BarieraApp.Services;
 
 namespace BarieraApp
 {
@@ -22,7 +22,7 @@ namespace BarieraApp
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            if (grantResults.All(x => (int)x == 0))
+            if (grantResults.All(x => x == 0))
             {
                 StartService();
             }
@@ -45,8 +45,7 @@ namespace BarieraApp
 
             service = new MainService();
 
-            phoneNumber.Text=service.GetSelectedPhone();
-
+            phoneNumber.Text = service.GetSelectedPhone();
             startButton.Enabled = !service.CheckIfBarieraServiceIsRunning();
             stopButton.Enabled = service.CheckIfBarieraServiceIsRunning();
         }
@@ -58,7 +57,7 @@ namespace BarieraApp
 
         private void Start_Click(object sender, System.EventArgs e)
         {
-            if (string.IsNullOrEmpty(MainService.CurrentPhoneNumber))
+            if (string.IsNullOrEmpty(service.GetSelectedPhone()))
             {
                 CreateSetNumberAlert();
                 return;
@@ -67,11 +66,40 @@ namespace BarieraApp
 
             if (neededPermissions.Length > 0)
             {
-                RequestPermissions(neededPermissions, MainService.PermissionCode++);
+                RequestPermissions(neededPermissions, 0);
             }
             else
             {
                 StartService();
+            }
+        }
+
+        private void Stop_Click(object sender, System.EventArgs e)
+        {
+            var isRunning = service.CheckIfBarieraServiceIsRunning();
+            StopService(new Intent(this, typeof(BarieraForgroundService)));
+            startButton.Enabled = true;
+            stopButton.Enabled = false;
+        }
+
+        private void StartService()
+        {
+            StartService(new Intent(this, typeof(BarieraForgroundService)).SetAction(Constants.ActionStartService));
+            startButton.Enabled = false;
+            stopButton.Enabled = true;
+        }
+
+        private void SetPhoneNumber(object sender, System.EventArgs e)
+        {
+            phoneNumberError.Text = string.Empty;
+            if (service.IsValidPhoneNumber(phoneNumber.Text))
+            {
+                service.SetPhoneNumber(phoneNumber.Text);
+                Toast.MakeText(this, string.Format(Constants.PhoneNumberSetMessage, phoneNumber.Text), ToastLength.Long).Show();
+            }
+            else
+            {
+                CreateSetNumberAlert();
             }
         }
 
@@ -85,34 +113,6 @@ namespace BarieraApp
             dialog.Show();
         }
 
-        private void Stop_Click(object sender, System.EventArgs e)
-        {
-            var isRunning = service.CheckIfBarieraServiceIsRunning();
-            StopService(new Intent(this, typeof(BarieraService)));
-            startButton.Enabled = true;
-            stopButton.Enabled = false;
-        }
-
-        private void StartService()
-        {
-            StartService(new Intent(this, typeof(BarieraService)).SetAction(Constants.ActionStartService));
-            startButton.Enabled = false;
-            stopButton.Enabled = true;
-        }
-
-        private void SetPhoneNumber(object sender, System.EventArgs e)
-        {
-            phoneNumberError.Text = string.Empty;
-            if (service.IsValidaPhoneNumber(phoneNumber.Text))
-            {
-                service.SetPhoneNumber(phoneNumber.Text);
-                Toast.MakeText(this, string.Format(Constants.PhoneNumberSetMessage,phoneNumber.Text), ToastLength.Long).Show();
-            }
-            else
-            {
-                CreateSetNumberAlert();
-            }
-        }
     }
 }
 

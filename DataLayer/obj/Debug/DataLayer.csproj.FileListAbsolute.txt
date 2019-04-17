@@ -22,4 +22,3 @@
 /Users/andrei.trenea/RiderProjects/Barrier/BarieraApp/DataLayer/obj/Debug/R.cs.flag
 /Users/andrei.trenea/RiderProjects/Barrier/BarieraApp/DataLayer/obj/Debug/R.txt
 /Users/andrei.trenea/RiderProjects/Barrier/BarieraApp/DataLayer/obj/Debug/uploadflags.txt
-/Users/andrei.trenea/RiderProjects/Barrier/BarieraApp/DataLayer/obj/Debug/DataLayer.csprojAssemblyReference.cache

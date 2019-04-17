@@ -1,7 +1,7 @@
 using Android.App;
 using Android.Content;
 using Android.Telephony;
-
+using BarieraApp.Services;
 
 namespace BarieraApp
 {
@@ -28,15 +28,16 @@ namespace BarieraApp
             }
             if (intent.HasExtra("pdus"))
             {
+                var selectedPhoneNumber = service.GetSelectedPhone();
                 var smsArray = (Java.Lang.Object[])intent.Extras.Get("pdus");
                 foreach (var item in smsArray)
                 {
                     var sms = SmsMessage.CreateFromPdu((byte[])item);
                     if (sms.DisplayMessageBody.ToLower().Contains(Constants.Keyword))
                     {
-                        if (!string.IsNullOrEmpty(MainService.CurrentPhoneNumber))
+                        if (!string.IsNullOrEmpty(selectedPhoneNumber))
                         {
-                            CallNumber(context, string.Format("tel: {0}", MainService.CurrentPhoneNumber));
+                            CallNumber(context, string.Format("tel: {0}", selectedPhoneNumber));
                         }
                     }
                 }

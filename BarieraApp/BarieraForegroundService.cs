@@ -5,7 +5,7 @@ using Android.OS;
 namespace BarieraApp
 {
     [Service]
-    public class BarieraService : Service
+    public class BarieraForgroundService : Service
     {
         private SmsReceiver receiver;
 

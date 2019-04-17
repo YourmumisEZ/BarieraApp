@@ -1,48 +1,48 @@
-﻿using DataLayer.DataModels;
+﻿using System;
+using DataLayer.DataModels;
+using SQLite;
 
 namespace DataLayer.Repositories
 {
-    public class TelephoneRepository
+    public class TelephoneRepository : IDisposable
     {
+        private SQLiteConnection context;
+
+        public TelephoneRepository()
+        {
+            context = new DBHelper().DB;
+        }
+
         public void Create()
         {
-            using (var context = new DBHelper())
-            {
-                if (context.DB.Table<Telephone>().Count() == 0)
-                {
-                    context.DB.CreateTable<Telephone>();
-                }
-            }
+            context.CreateTable<Telephone>();
         }
 
         public void Insert(Telephone entry)
         {
-            using (var context = new DBHelper())
-            {
-                context.DB.Insert(entry);
-            }
+            context.Insert(entry);
         }
 
         public Telephone GetTelephone()
         {
-            using (var context = new DBHelper())
-            {
-                var table = context.DB.Table<Telephone>();
-                return table.Where(x => x.IsSelected == true)?.FirstOrDefault();
-            }
+            var table = context.Table<Telephone>();
+            return table.Where(x => x.IsSelected == true)?.FirstOrDefault();
+
         }
 
         public void Invalidate()
         {
-            using (var context = new DBHelper())
+            var table = context.Table<Telephone>();
+            foreach (var item in table)
             {
-                var table = context.DB.Table<Telephone>();
-                foreach(var item in table)
-                {
-                    item.IsSelected = false;
-                }
-                context.DB.UpdateAll(table);
+                item.IsSelected = false;
+                context.Update(item);
             }
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }
