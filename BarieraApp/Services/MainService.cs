@@ -4,12 +4,13 @@ using Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using BarieraApp.Interfaces;
 using DataLayer.DataModels;
 using DataLayer.Repositories;
 
 namespace BarieraApp.Services
 {
-    public class MainService
+    public class MainService : IMainService
     {
         public readonly List<string> callPermissions = new List<string>()
         {

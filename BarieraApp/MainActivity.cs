@@ -7,6 +7,8 @@ using Android.Content.PM;
 using Android.Runtime;
 using System.Linq;
 using BarieraApp.Services;
+using Autofac;
+using BarieraApp.Interfaces;
 
 namespace BarieraApp
 {
@@ -18,7 +20,7 @@ namespace BarieraApp
         private Button setPhoneNumberButton;
         private EditText phoneNumber;
         private TextView phoneNumberError;
-        private MainService service;
+        private IMainService service;
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
@@ -43,7 +45,7 @@ namespace BarieraApp
             stopButton.Click += Stop_Click;
             setPhoneNumberButton.Click += SetPhoneNumber;
 
-            service = new MainService();
+            service = App.Container.Resolve<IMainService>();
 
             phoneNumber.Text = service.GetSelectedPhone();
             startButton.Enabled = !service.CheckIfBarieraServiceIsRunning();
