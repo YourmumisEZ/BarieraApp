@@ -42,8 +42,6 @@ namespace BarieraApp
             phoneNumberError = (TextView)FindViewById(Resource.Id.phoneNumberError);
             phoneNumberError.SetTextColor(Color.Red);
 
-            var isCommingFromService=Intent.GetBooleanExtra("fromService",false);
-
             startButton.Click += Start_Click;
             stopButton.Click += Stop_Click;
             setPhoneNumberButton.Click += SetPhoneNumber;
@@ -51,6 +49,11 @@ namespace BarieraApp
             service = App.Container.Resolve<IMainService>();
 
             phoneNumber.Text = service.GetSelectedPhone();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
             startButton.Enabled = !service.CheckIfBarieraServiceIsRunning();
             stopButton.Enabled = service.CheckIfBarieraServiceIsRunning();
         }
