@@ -42,7 +42,7 @@ namespace BarieraApp
             phoneNumberError = (TextView)FindViewById(Resource.Id.phoneNumberError);
             phoneNumberError.SetTextColor(Color.Red);
 
-            var test=Intent.GetBooleanExtra("fromService",false);
+            var isCommingFromService=Intent.GetBooleanExtra("fromService",false);
 
             startButton.Click += Start_Click;
             stopButton.Click += Stop_Click;
