@@ -26,6 +26,7 @@ namespace BarieraApp
 		
 		public static void UpdateIdValues()
 		{
+			global::DataLayer.Resource.String.library_name = global::BarieraApp.Resource.String.library_name;
 		}
 		
 		public partial class Drawable
@@ -102,6 +103,9 @@ namespace BarieraApp
 			
 			// aapt resource value: 0x7F040002
 			public const int Hello = 2130968578;
+			
+			// aapt resource value: 0x7F040004
+			public const int library_name = 2130968580;
 			
 			static String()
 			{

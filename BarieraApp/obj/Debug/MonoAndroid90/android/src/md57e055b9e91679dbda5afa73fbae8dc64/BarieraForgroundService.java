@@ -1,7 +1,7 @@
 package md57e055b9e91679dbda5afa73fbae8dc64;
 
 
-public class BarieraService
+public class BarieraForgroundService
 	extends android.app.Service
 	implements
 		mono.android.IGCUserPeer
@@ -15,15 +15,15 @@ public class BarieraService
 			"n_onDestroy:()V:GetOnDestroyHandler\n" +
 			"n_onStartCommand:(Landroid/content/Intent;II)I:GetOnStartCommand_Landroid_content_Intent_IIHandler\n" +
 			"";
-		mono.android.Runtime.register ("BarieraApp.BarieraService, BarieraApp", BarieraService.class, __md_methods);
+		mono.android.Runtime.register ("BarieraApp.BarieraForgroundService, BarieraApp", BarieraForgroundService.class, __md_methods);
 	}
 
 
-	public BarieraService ()
+	public BarieraForgroundService ()
 	{
 		super ();
-		if (getClass () == BarieraService.class)
-			mono.android.TypeManager.Activate ("BarieraApp.BarieraService, BarieraApp", "", this, new java.lang.Object[] {  });
+		if (getClass () == BarieraForgroundService.class)
+			mono.android.TypeManager.Activate ("BarieraApp.BarieraForgroundService, BarieraApp", "", this, new java.lang.Object[] {  });
 	}
 
 

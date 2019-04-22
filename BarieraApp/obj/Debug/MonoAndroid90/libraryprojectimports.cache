@@ -1,8 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars />
-  <ResolvedResourceDirectories />
-  <ResolvedAssetDirectories />
+  <ResolvedResourceDirectories>
+    <ResolvedResourceDirectory>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\1\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\3\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\4\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\5\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\6\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\7\jl\res</ResolvedResourceDirectory>
+  </ResolvedResourceDirectories>
+  <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>obj\\Debug\MonoAndroid90\lp\1\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\\Debug\MonoAndroid90\lp\3\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\\Debug\MonoAndroid90\lp\4\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\\Debug\MonoAndroid90\lp\5\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\\Debug\MonoAndroid90\lp\6\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\\Debug\MonoAndroid90\lp\7\jl\assets</ResolvedAssetDirectory>
+  </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
-  <ResolvedResourceDirectoryStamps />
+  <ResolvedResourceDirectoryStamps>
+    <ResolvedResourceDirectoryStamp>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\1.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\3.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\4.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\5.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\6.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\solutions\Bariera\BarieraApp\BarieraApp\obj\Debug\MonoAndroid90\lp\7.stamp</ResolvedResourceDirectoryStamp>
+  </ResolvedResourceDirectoryStamps>
 </Paths>

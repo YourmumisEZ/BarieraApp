@@ -9,6 +9,7 @@ using System.Linq;
 using BarieraApp.Services;
 using Autofac;
 using BarieraApp.Interfaces;
+using System.Collections.Generic;
 
 namespace BarieraApp
 {
@@ -40,6 +41,8 @@ namespace BarieraApp
             phoneNumber = (EditText)FindViewById(Resource.Id.phoneNr);
             phoneNumberError = (TextView)FindViewById(Resource.Id.phoneNumberError);
             phoneNumberError.SetTextColor(Color.Red);
+
+            var test=Intent.GetBooleanExtra("fromService",false);
 
             startButton.Click += Start_Click;
             stopButton.Click += Stop_Click;
@@ -114,7 +117,6 @@ namespace BarieraApp
             Dialog dialog = alert.Create();
             dialog.Show();
         }
-
     }
 }
 

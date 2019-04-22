@@ -7,5 +7,6 @@ int id phoneNr 0x7f050003
 int id phoneNrLabel 0x7f050002
 int id phoneNumberError 0x7f050005
 int layout main 0x7f030000
-int string ApplicationName 0x7f040001
-int string Hello 0x7f040000
+int string ApplicationName 0x7f040002
+int string Hello 0x7f040001
+int string library_name 0x7f040000

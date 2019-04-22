@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using System.Linq;
 
 namespace BarieraApp
 {
@@ -33,7 +34,11 @@ namespace BarieraApp
             }
             else if(intent.Action.Equals(Constants.ActionStopService))
             {
+                var test = IsAppRunning("BarieraApp.BarieraApp");
                 StopSelf();
+                var app = new Intent(this, typeof(MainActivity));
+                app.PutExtra("fromService", true);
+                StartActivity(app);
             }
             return StartCommandResult.Sticky;
         }
@@ -79,6 +84,14 @@ namespace BarieraApp
 
 
             return builder.Build();
+        }
+
+        private bool IsAppRunning(string myPackage)
+        {
+            ActivityManager manager = (ActivityManager)GetSystemService(ActivityService);
+            var runningTaskInfo = manager.GetRunningTasks(1);
+            ComponentName componentInfo = runningTaskInfo.ElementAt(0).TopActivity;
+            return componentInfo.PackageName.Equals(myPackage);
         }
     }
 }
