@@ -66,9 +66,6 @@ namespace BarieraApp
 			// aapt resource value: 0x7F020004
 			public const int phoneNrLabel = 2130837508;
 			
-			// aapt resource value: 0x7F020007
-			public const int phoneNumberError = 2130837511;
-			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

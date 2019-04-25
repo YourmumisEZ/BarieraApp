@@ -20,7 +20,6 @@ namespace BarieraApp
         private Button stopButton;
         private Button setPhoneNumberButton;
         private EditText phoneNumber;
-        private TextView phoneNumberError;
         private IMainService service;
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -39,8 +38,6 @@ namespace BarieraApp
             stopButton = FindViewById<Button>(Resource.Id.button2);
             setPhoneNumberButton = FindViewById<Button>(Resource.Id.button3);
             phoneNumber = (EditText)FindViewById(Resource.Id.phoneNr);
-            phoneNumberError = (TextView)FindViewById(Resource.Id.phoneNumberError);
-            phoneNumberError.SetTextColor(Color.Red);
 
             startButton.Click += Start_Click;
             stopButton.Click += Stop_Click;
@@ -99,7 +96,6 @@ namespace BarieraApp
 
         private void SetPhoneNumber(object sender, System.EventArgs e)
         {
-            phoneNumberError.Text = string.Empty;
             if (service.IsValidPhoneNumber(phoneNumber.Text))
             {
                 service.SetPhoneNumber(phoneNumber.Text);

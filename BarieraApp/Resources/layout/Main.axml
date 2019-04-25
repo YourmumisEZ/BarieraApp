@@ -6,14 +6,16 @@
 	android:layout_height="match_parent">
 	<Button
 		android:text="Start Service"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:id="@+id/button1" />
+		android:id="@+id/button1"
+		android:layout_marginLeft="126dp"  />
 	<Button
 		android:text="Stop Service"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:id="@+id/button2" />
+		android:id="@+id/button2"
+		android:layout_marginLeft="130dp"  />
 	<TextView
 		android:id="@+id/phoneNrLabel"
 		android:layout_width="match_parent"
@@ -22,17 +24,14 @@
 		android:gravity="center" />
 	<EditText
 		android:id="@+id/phoneNr"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content" />
+		android:layout_width="159dp"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:layout_gravity="center" />
 	<Button
 		android:text="Set Phone Number"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_marginLeft="110dp"
 		android:id="@+id/button3" />
-	<TextView
-		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/phoneNumberError"
-		android:gravity="center_horizontal" />
 </LinearLayout>
